@@ -13,7 +13,7 @@ services:
     container_name: we_api
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ASPNETCORE_HTTP_PORT=8068
+      - ASPNETCORE_HTTP_PORTS=8068
       - DB_URL=${DB_URL}
       - JWT_VALID_AUDIENCE=${JWT_VALID_AUDIENCE}
       - JWT_VALID_ISSUER=${JWT_VALID_ISSUER}
