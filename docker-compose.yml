@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+
+  we-client:
+    image: wintang1103/we-client
+    container_name: we_client
+    ports:
+      - "3000:3000"
+
+  we-api:
+    image: korroo/we-api
+    container_name: we_api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_HTTP_PORT=8068
+      - DB_URL=${DB_URL}
+      - JWT_VALID_AUDIENCE=${JWT_VALID_AUDIENCE}
+      - JWT_VALID_ISSUER=${JWT_VALID_ISSUER}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    ports:
+      - "8068:8068"
+
+  we-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: we_db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${SA_PASSWORD}
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+
+volumes:
+  mssql_data:
+    driver: local
