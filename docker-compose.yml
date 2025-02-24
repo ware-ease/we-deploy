@@ -22,7 +22,7 @@ services:
       - "8068:8068"
 
   we-db:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    image: mcr.microsoft.com/mssql/server:2022-CU17-ubuntu-22.04
     container_name: we_db
     environment:
       - ACCEPT_EULA=Y
