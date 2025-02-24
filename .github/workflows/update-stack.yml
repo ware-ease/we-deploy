@@ -12,14 +12,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Create .env file
-      run: |
-        echo "DB_URL=${{ secrets.DB_URL }}" >> .env
-        echo "JWT_VALID_AUDIENCE=${{ secrets.JWT_VALID_AUDIENCE }}" >> .env
-        echo "JWT_VALID_ISSUER=${{ secrets.JWT_VALID_ISSUER }}" >> .env
-        echo "JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}" >> .env
-        echo "SA_PASSWORD=${{ secrets.SA_PASSWORD }}" >> .env
-
     - name: Update Stack
       run: |
         curl -X POST "${{ secrets.WEBHOOK_URL }}" -k
