@@ -1,0 +1,17 @@
+name: Update Stack
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  update-stack:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Update Stack
+      run: |
+        curl -X POST "${{ secrets.WEBHOOK_URL }}" -k
