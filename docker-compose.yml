@@ -18,6 +18,11 @@ services:
       - JWT_VALID_AUDIENCE=${JWT_VALID_AUDIENCE}
       - JWT_VALID_ISSUER=${JWT_VALID_ISSUER}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - SMTP_FROM=${SMTP_FROM}
     ports:
       - "8068:8068"
 
